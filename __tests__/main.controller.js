@@ -8,7 +8,17 @@ const {
 } = require('dom-testing-library');
 require('dom-testing-library/extend-expect');
 const angular = require('angular');
+require('angular-mocks');
 const App = require('../app/index');
+
+MockRequests.$inject = [
+  '$httpBackend'
+];
+function MockRequests(
+  $httpBackend
+) {
+  $httpBackend.whenGET('/derp').respond('success');
+}
 
 describe('MainController', () => {
   let container;
@@ -24,7 +34,11 @@ describe('MainController', () => {
         </ul>
       </div>
     `;
-    angular.bootstrap(container, [App.name]);
+
+    const mockapp = angular.module(`${App.name}Dev`, [App.name, 'ngMockE2E'])
+      .run(MockRequests);
+
+    angular.bootstrap(container, [mockapp.name]);
   });
 
   it('should render', async () => {
@@ -37,7 +51,7 @@ describe('MainController', () => {
     getByTestId(container, 'asyncButton').click();
 
     await wait(() => {
-      expect(queryByTestId(container, 'item3')).not.toBeInTheDOM();
+      expect(queryByTestId(container, 'item4')).toHaveTextContent('success');
     });
   });
 

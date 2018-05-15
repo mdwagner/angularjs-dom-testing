@@ -1,9 +1,11 @@
 MainController.$inject = [
-  '$timeout'
+  '$timeout',
+  '$http'
 ];
 
 function MainController(
-  $timeout
+  $timeout,
+  $http
 ) {
   const vm = this;
   vm.myList = [
@@ -21,7 +23,9 @@ function MainController(
 
   function asyncRequest() {
     $timeout(() => {
-      vm.myList.pop();
+      $http.get('/derp').then(r => {
+        vm.myList.push(r.data);
+      });
     }, 1000);
   }
 }

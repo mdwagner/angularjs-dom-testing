@@ -1,13 +1,17 @@
 {
   "name": "angularjs-dom-testing",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "app/index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "license": "MIT",
-  "devDependencies": {
+  "dependencies": {
     "angular": "^1.7.0",
+    "angular-mocks": "^1.7.0"
+  },
+  "devDependencies": {
     "dom-testing-library": "^2.2.0",
     "jest": "^22.4.3"
   }
