@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --debug"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
-    "dom-testing-library": "^2.2.0"
+    "angular": "^1.7.0",
+    "dom-testing-library": "^2.2.0",
+    "jest": "^22.4.3"
   }
 }
