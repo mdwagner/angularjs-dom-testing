@@ -24,5 +24,5 @@ function WidgetController() {
   }
 }
 
-exports.componentName = 'widget';
-exports.config = config;
+module.exports.componentName = 'widget';
+module.exports.config = config;
